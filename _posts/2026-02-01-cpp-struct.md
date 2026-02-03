@@ -131,6 +131,6 @@ int main()
 #### 프로그램 실행결과:
 b의 값이 00000000, FFFF0000, 0000FFFF, FFFFFFFF 4개 중 하나로 나오고 있다.  
 data.a에 값을 write 하는 작업이 원자적으로 수행되고 있지 않는것을 알 수 있다.  
-![실행결과](/assets/img/posts/2026-02-01-cpp_struct_img1.png){: .left}  
+![실행결과](/assets/img/posts/2026-02-01-cpp-struct-img1.png){: .left}  
 
 <div style="clear: both;"></div>
