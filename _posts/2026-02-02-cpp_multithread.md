@@ -1,9 +1,9 @@
 ---
-title: 멀티스레드 프로그래밍에서 루프 탈출조건에 bool 변수를 쓸 때 atomic bool을 써야하는 이유
+title: 루프 탈출조건에 atomic bool을 써야하는 이유
 date: 2026-02-02 02:14:33 +0900
-categories: [C++, 멀티스레드]
+categories: [멀티스레드, Programming]
 tags: [c++, multithread]
-description: 멀티스레드 프로그래밍에서 루프 탈출조건에 bool 변수를 쓸 때 atomic bool을 써야하는 이유
+description: 루프 탈출조건에 atomic bool을 써야하는 이유
 ---
 
 ## 요약

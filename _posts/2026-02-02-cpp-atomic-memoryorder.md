@@ -1,7 +1,7 @@
 ---
 title: atomic 변수와 memory_order
 date: 2026-02-03 11:08:03 +0900
-categories: [C++, 멀티스레드]
+categories: [멀티스레드, Programming]
 tags: [c++, multithread]
 description: atomic 변수와 memory_order
 ---

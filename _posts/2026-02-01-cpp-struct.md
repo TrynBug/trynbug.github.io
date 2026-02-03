@@ -1,8 +1,8 @@
 ---
 title: C++ 구조체
 date: 2026-02-01 21:26:31 +0900
-categories: [C++, Grammar]
-tags: [c++, grammar]
+categories: [C++, 구조체]
+tags: [c++, struct]
 description: C++ 구조체
 ---
 
