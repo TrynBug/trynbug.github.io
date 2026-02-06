@@ -1,9 +1,9 @@
 ---
-title: C++ 구조체
+title: C++ 구조체와 메모리정렬
 date: 2026-02-01 21:26:31 +0900
 categories: [C++, 구조체]
 tags: [c++, struct]
-description: C++ 구조체
+description: C++ 구조체와 메모리정렬
 ---
 
 ## 요약
