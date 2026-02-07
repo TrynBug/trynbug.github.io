@@ -2,7 +2,7 @@
 title: 루프 탈출조건에 atomic bool을 써야하는 이유
 date: 2026-02-02 02:14:33 +0900
 categories: [멀티스레드, Programming]
-tags: [c++, multithread]
+tags: [multithread, atomic]
 description: 루프 탈출조건에 atomic bool을 써야하는 이유
 ---
 

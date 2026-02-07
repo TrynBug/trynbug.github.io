@@ -1,9 +1,9 @@
 ---
-title: atomic 변수와 memory_order
+title: atomic 변수와 memory order
 date: 2026-02-03 11:08:03 +0900
 categories: [멀티스레드, Programming]
-tags: [c++, multithread]
-description: atomic 변수와 memory_order
+tags: [multithread, atomic]
+description: atomic 변수와 memory order
 ---
 
 참고: 이 문서는 x86-64 아키텍처 기준입니다.  
