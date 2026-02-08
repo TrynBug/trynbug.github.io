@@ -1,7 +1,7 @@
 ---
 title: CriticalSection 동기화객체
 date: 2026-02-07 20:15:27 +0900
-categories: [멀티스레드, 동기화객체]
+categories: [멀티스레드, 동기화]
 tags: [multithread, synchronization]
 description: CriticalSection 동기화객체
 ---
