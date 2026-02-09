@@ -1,6 +1,6 @@
 ---
 title: std::condition_variable
-date: 2026-02-08 22:01:24 +0900
+date: 2026-02-09 21:00:35 +0900
 categories: [멀티스레드, 동기화]
 tags: [multithread, synchronization]
 description: std::condition_variable
@@ -8,10 +8,8 @@ description: std::condition_variable
 
 ## 1. std::condition_variable
 
-condition_variable은 스레드를 대기시켜 놓았다가 원하는 때에 깨우는 기능을 구현할 때 사용한다.
-
-
-
+condition_variable은 스레드를 대기시켜 놓았다가 원하는 때에 깨우는 기능을 구현할 때 사용한다.  
+아래 예제를 통해서 알아보자.  
 
 ## 2. Producer - Consumer 패턴 예제
 ```cpp
@@ -34,7 +32,42 @@ public:
     Producer() {}
     ~Producer() {}
 
+private:
+    std::condition_variable m_cv;    // condition variable
+    std::mutex m_lock;               // mutex 1개가 반드시 필요하다.
+
+    std::queue< std::shared_ptr<Job> > m_jobQueue;  // 공유자원
+
 public:
+    // 작업 얻기(작업을 얻을때까지 스레드가 block됨)
+    std::shared_ptr<Job> GetJob()
+    {
+        // unique_lock 생성(생성하면 일단 lock 걸림)
+        std::unique_lock<std::mutex> ulock( m_lock );
+
+        // condition_variable을 기다린다.
+        // condition_variable은 내부적으로 ulock.unlock() 하여 lock을 해제한 다음, 다른 스레드가 notify_one을 호출할 때까지 기다린다.
+        m_cv.wait( ulock, [ this ]
+        {
+            // 이 위치로 들어왔으면 다른 스레드가 notify_one을 호출한 것이다.
+            // 그리고 이 위치로 들어왔으면 condition_variable이 lock을 획득한 상태이다.
+            // 그래서 공유자원을 안전하게 사용할 수 있다.
+
+            // 참고: 다른 스레드가 notify_one을 호출하지 않았는데도 스레드가 깨어나는 때가 있다.
+            // 이것을 spurious wakeup 이라고 한다.
+            // 그래서 스레드가 깨어났을 때 정말로 임계영역에 진입해도 되는 상태인지를 한번 더 체크해야 한다. (그래서 !m_jobQueue.empty(); 를 체크한다)
+
+            // 여기서 true를 리턴하면 임계영역에 진입하는 것이다.
+            // false를 리턴하면 lock을 해제하고 다시 condition_variable을 기다린다.
+            return !m_jobQueue.empty();
+        } );
+
+        // 임계영역 진입함
+        std::shared_ptr<Job> spJob = m_jobQueue.front();
+        m_jobQueue.pop();
+        return spJob;
+    }
+
     // 작업 입력
     void PublishJob( std::shared_ptr<Job> spJob )
     {
@@ -42,33 +75,14 @@ public:
             return;
 
         {
+            // lock 걸고 공유자원 사용
             std::lock_guard lockGuard( m_lock );
             m_jobQueue.push( spJob );
         }
 
+        // condition_variable을 기다리는 스레드 하나를 깨운다.
         m_cv.notify_one();
     }
-
-    // 작업 얻기(작업을 얻을때까지 스레드가 block됨)
-    std::shared_ptr<Job> GetJob()
-    {
-        std::unique_lock<std::mutex> ulock( m_lock );
-
-        m_cv.wait( ulock, [ this ]
-        {
-            return !m_jobQueue.empty();
-        } );
-
-        std::shared_ptr<Job> spJob = m_jobQueue.front();
-        m_jobQueue.pop();
-        return spJob;
-    }
-
-private:
-    std::condition_variable m_cv;
-    std::mutex m_lock;
-
-    std::queue< std::shared_ptr<Job> > m_jobQueue;
 };
 
 // 소비자 클래스
@@ -77,6 +91,9 @@ class Consumer
 public:
     Consumer() {}
     ~Consumer() {}
+
+private:
+    std::weak_ptr<Producer> m_wpProducer;
 
 public:
     // 생산자 등록
@@ -104,12 +121,9 @@ public:
             }
         }
     }
-
-private:
-
-    std::weak_ptr<Producer> m_wpProducer;
 };
 
+// 생산자, 소비자 생성하기
 int main()
 {
     std::shared_ptr<Producer> spProducer = std::make_shared<Producer>();
