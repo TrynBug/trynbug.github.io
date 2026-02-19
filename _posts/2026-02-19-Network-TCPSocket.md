@@ -124,3 +124,24 @@ shutdown(socket, SD_SEND);
 ## 소켓 옵션의 상속
 소켓에 적용해둔 옵션은 이 소켓을 통해 생성된 다른 소켓에도 상속된다.
 그래서 Accept 소켓(Listen 소켓)에 옵션을 1번만 지정해 놓으면 된다.
+
+## backlog queue
+int listen(SOCK s, int backlog);
+backlog 는 서버가 당장 처리하지 않더라도 연결 가능한 클라이언트의 개수이다.  
+TCP 연결할 때의 3-way handshake는 사용자 어플리케이션이 수행하는게 아니라 TCP가 수행하는 것이다.  
+그래서 TCP 연결이 성공했을 때 연결정보를 OS가 connection queue(backlog queue)에 저장해두었다가 사용자 어플리케이션이 accept 함수를 호출했을 때 연결정보를 하나씩 전달해준다.  
+
+backlog queue의 크기를 최대로 설정하려면 SOMAXCONN(0x7fffffff) 을 입력하면 되는데, 그러면 크기가 200으로 세팅된다.  
+서버측의 backlog queue가 가득 찼을 때 클라이언트가 연결하려고 하면 클라이언트측에서 WSAECONNREFUSED 10061 오류가 발생한다.  
+만약 클라이언트 PC에서 IP에 할당할 사설 포트 번호가 부족하면 WSAENOBUFS 10055 오류가 발생한다.  
+
+backlog queue 크기는 굳이 크게 잡을 필요 없는데, 서버에서 계속해서 accept 한다면 1개 스레드로도 초당 수천건의 연결을 처리할 수 있기 때문이다.
+
+```cpp
+// listen 소켓 생성
+SOCKET listenSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+
+// listen() 함수를 호출할 때 backlog queue 크기를 지정할 수 있다.
+int backlogSize = 100;
+listen(listenSocket, SOMAXCONN_HINT(backlogSize));
+```
