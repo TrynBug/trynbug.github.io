@@ -1,8 +1,8 @@
 ---
 title: OSI 7계층
 date: 2026-02-19 11:28:05 +0900
-categories: [Network]
-tags: [network]
+categories: [네트워크, Network]
+tags: [network, osi]
 description: OSI 7계층
 ---
 

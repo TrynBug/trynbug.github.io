@@ -1,8 +1,8 @@
 ---
 title: TCP 헤더
 date: 2026-02-19 15:42:40 +0900
-categories: [Network]
-tags: [network]
+categories: [네트워크, TCP]
+tags: [network, TCP]
 description: TCP 헤더
 ---
 

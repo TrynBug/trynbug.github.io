@@ -1,8 +1,8 @@
 ---
 title: TCP 소켓
 date: 2026-02-19 20:20:33 +0900
-categories: [Network]
-tags: [network]
+categories: [네트워크, TCP]
+tags: [network, TCP]
 description: TCP 소켓
 ---
 
