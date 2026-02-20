@@ -9,9 +9,6 @@ description: atomic 변수와 memory order
 참고: 이 문서는 x86-64 아키텍처 기준입니다.  
 ARM 아키텍처에는 해당하지 않습니다.
 
-## 요약
-
-
 
 ## 1. memory_order
 

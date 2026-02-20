@@ -131,4 +131,5 @@ int WSARecv(
   [in]      LPWSAOVERLAPPED_COMPLETION_ROUTINE lpCompletionRoutine
 );
 ```
+WSASend, WSARecv 함수로 비동기로 소켓 작업을 요청하면, 함수는 즉시 리턴되지만 OS가 커널에서 알아서 작업을 해준다.
 비동기 소켓 Send, Recv 작업의 완료통지를 받으려면 Event, APC, IOCP 등을 사용할 수 있다.
