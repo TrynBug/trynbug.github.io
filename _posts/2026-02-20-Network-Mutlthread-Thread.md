@@ -9,14 +9,20 @@ description: 스레드
 ## 프로세스와 스레드
 
 프로세스(process)는 1개 프로세스 내의 스레드(thread)들을 관리하는 껍데기 이다.  
-프로세스는 자신만의 가상 메모리 공간, 핸들 테이블을 가진다.  
+프로세스가 가지고 있는것:
+- 자신만의 가상 메모리 공간
+- Code, Data, Heap 영역 등의 메모리 공간
+- 핸들 테이블
+- 스레드 핸들, 파일 핸들, 소켓, 세마포어 등의 운영체제가 할당한 시스템 자원
 
 실질적인 코드의 수행은 스레드 단위로 이루어진다.  
-1개 스레드는 자신의 스택(Stack) 메모리 영역, 레지스터 세트(Register Set)을 가진다.  
-이것들을 포함하여 추가적인 스레드 정보들은 커널에 의해 스레드 컨텍스트(ETHREAD block, CONTEXT 구조체 등)로 관리된다.  
-'스레드 컨텍스트' 라고 하는것은 스레드 1개를 설명할 수 있는 정보를 말한다.  
+스레드가 가지고 있는것:
+- 자신만의 스택 메모리 영역
+- 코드 실행과 연산을 위한 레지스터 세트(Register Set)
+- 스레드 컨텍스트(ETHREAD block, TEB, CONTEXT 구조체 등)
+  - '스레드 컨텍스트' 라고 하는것은 스레드 1개를 설명할 수 있는 정보를 말한다.  
 
-## CONTEXT
+## CONTEXT 구조체
 CONTEXT 구조체는 CPU core에서 실행중인 스레드의 현재 상태를 스냅샷으로 저장한 구조체이다.  
 주로 레지스터 값들이 저장되어 있다.  
 
@@ -164,6 +170,7 @@ int main()
 ## ETHREAD(Executive Thread) Block
 ETHREAD Block은 커널이 스레드 스케줄링 등을 위해 관리하는 구조체이다.  
 ETHREAD Block은 커널영역 메모리공간에 존재한다.  
+ETHREAD Block은 커널영역에 있어서 일반적으로는 정보를 조회할 수 없다.  
 
 ETHREAD Block에는 아래와 같은 정보들이 있다:
 - Thread time                  : 스레드 생성과 종료시간 정보
@@ -173,13 +180,11 @@ ETHREAD Block에는 아래와 같은 정보들이 있다:
 - KTHREAD block                : KTHREAD block은 TCB, thread control block 으로도 불린다. 상세 내용은 아래 참조
 
 KTHREAD block에는 아래와 같은 정보들이 있다:
-- Dispatcher header            : 스레드는 누군가 기다릴수있는 오브젝트이기 때문에 standard kernel dispatcher object header를 가지고 시작된다.
 - Execution time               : 유저, 커널 총 CPU 소요시간
 - Cycle time                   : 총 CPU cycle 시간
 - Scheduling information       : 스케줄링을 위한 정보. 스레드 할당시간, affinity mask, 스케줄링 상태 등
 - Wait information             : 스레드가 기다리는 오브젝트 리스트, 기다리는 이유, wait 했을때의 IRQL, wait 결과, 스레드가 wait 상태가된 시간
 - APC queues                   : 대기중인 유저모드 및 커널모드 APCs, alerted flag, APC 비활성화 플래그
-- Timer block                  : 내장된 timer block (또한 해당하는 wait block)
 - Pointer to TEB               : TEB 구조체 주소
 
-ETHREAD Block은 커널영역에 있고 일반적으로 정보를 조회할 수 없다.  
+
