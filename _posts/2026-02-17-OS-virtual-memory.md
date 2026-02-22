@@ -1,8 +1,8 @@
 ---
 title: 가상 메모리
 date: 2026-02-17 23:28:12 +0900
-categories: [Memory, 가상메모리]
-tags: [memory, 가상메모리]
+categories: [OS, 메모리]
+tags: [OS, 메모리]
 description: 가상 메모리
 ---
 
