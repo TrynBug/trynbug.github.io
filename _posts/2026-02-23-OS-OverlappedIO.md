@@ -76,6 +76,26 @@ Overlapped I/O가 반드시 비동기로 처리되는것은 아니다.
 (I/O가 동기로 처리되어도 Event 객체가 signal 되지 않거나, IOCP Completion Queue에 완료통지가 삽입되지 않거나 하는일은 발생하지 않는다.)  
 
 ## Overlapped I/O 처리절차
+소켓에 receive를 Overlapped I/O로 요청했을 때의 처리 절차를 알아보자.  
+
+1. WSARecv 함수로 소켓에 receive 요청을 한다.
+2. OS의 I/O Manager는 IRP(I/O Request Packet) 데이터를 생성한다. IRP에는 1개 I/O 작업에 대한 명세가 들어있다.
+  - IRP에는 OVERLAPPED 구조체의 주소, 사용자 수신버퍼 주소, I/O작업 진행상태 등의 정보가 들어있다.
+3. OS가 사용자 수신버퍼의 메모리영역이 포함된 Page를 lock 하여 page out 되지 않도록 한다.
+  - 사용자 수신버퍼 메모리영역이 page out 되면 안되는 이유는 NIC가 수신한 데이터를 사용자 수신버퍼에 직접 넣을 수 있기 때문이다.
+  - NIC가 사용자 수신버퍼에 접근할 때 해당 메모리영역이 page out 되어있으면 절대 안된다.
+4. OS의 I/O Manager는 IRP를 NIC의 드라이버의 큐에 넣어 전달한다.
+5. WSARecv 함수는 리턴되고, WSARecv 함수를 호출한 스레드는 다른 작업을 계속 수행할 수 있다.
+
+6. NIC가 패킷을 수신한다.
+7. NIC는 DMA(Direct Memory Access) 방식으로 수신한 데이터를 (가능한 경우에)사용자 수신버퍼에 직접 전달한다.
+  - 사용자 수신버퍼가 포함된 메모리 page를 미리 lock 걸어두었기 때문에 가능하다.
+8. 수신한 데이터 저장이 완료되었으면 NIC는 인터럽트를 발생시켜 CPU에게 알린다.
+9. 인터럽트 핸들러가 인터럽트를 처리하고 IRP를 완료상태로 만든다.
+  - OVERLAPPED 구조체에 등록된 Event 객체가 있으면 Event 객체를 signal 상태로 바꾼다.
+  - CompletionRoutine 함수가 있다면 APC Queue에 CompletionRoutine 함수를 삽입한다.
+  - 소켓이 IOCP와 연결되어 있다면 IOCP의 Completion Queue에 결과를 삽입한다.
+
 
 
 ## Event 객체를 사용하여 완료통지 받기
