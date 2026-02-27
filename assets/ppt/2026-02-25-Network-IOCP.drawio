@@ -1,0 +1,183 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="29.5.4">
+  <diagram name="페이지-1" id="3lVlf3rK0IMBnpzzSdCu">
+    <mxGraphModel dx="1039" dy="880" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="100" width="290" x="305" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;fontStyle=0" value="장치 리스트(Device List)" vertex="1">
+          <mxGeometry height="30" width="180" x="305" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="핸들" vertex="1">
+          <mxGeometry height="20" width="80" x="375" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&amp;nbsp;CompletionKey" vertex="1">
+          <mxGeometry height="20" width="120" x="455" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="장치1" vertex="1">
+          <mxGeometry height="30" width="60" x="305" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="핸들" vertex="1">
+          <mxGeometry height="20" width="80" x="375" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&amp;nbsp;CompletionKey" vertex="1">
+          <mxGeometry height="20" width="120" x="455" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-8" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="장치2" vertex="1">
+          <mxGeometry height="30" width="60" x="305" y="135" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-9" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;horizontal=0;fontStyle=1;fontSize=16;" value="..." vertex="1">
+          <mxGeometry height="30" width="40" x="309" y="157" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="100" width="530" x="305" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-11" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;fontStyle=0" value="I/O 컴플리션 큐(I/O Completion Queue, FIFO)" vertex="1">
+          <mxGeometry height="30" width="350" x="305" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-12" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="처리된 byte수" vertex="1">
+          <mxGeometry height="20" width="110" x="375" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="CompletionKey" vertex="1">
+          <mxGeometry height="20" width="120" x="485" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-14" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="완료통지1" vertex="1">
+          <mxGeometry height="30" width="60" x="308" y="265" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-17" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="완료통지2" vertex="1">
+          <mxGeometry height="30" width="60" x="308" y="295" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-18" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;horizontal=0;fontStyle=1;fontSize=16;" value="..." vertex="1">
+          <mxGeometry height="30" width="40" x="312" y="317" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="OVERLAPPED 주소" vertex="1">
+          <mxGeometry height="20" width="130" x="605" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-20" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="error 코드" vertex="1">
+          <mxGeometry height="20" width="80" x="735" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-22" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="처리된 byte수" vertex="1">
+          <mxGeometry height="20" width="110" x="375" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-23" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="CompletionKey" vertex="1">
+          <mxGeometry height="20" width="120" x="485" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-24" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="OVERLAPPED 주소" vertex="1">
+          <mxGeometry height="20" width="130" x="605" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-25" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="error 코드" vertex="1">
+          <mxGeometry height="20" width="80" x="735" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-26" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="60" width="380" x="305" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-27" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;fontStyle=0" value="대기 스레드 큐(Waiting Thread Queue, LIFO)" vertex="1">
+          <mxGeometry height="30" width="350" x="305" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-28" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="스레드ID" vertex="1">
+          <mxGeometry height="20" width="90" x="375" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-75" edge="1" parent="1" source="t-E3fyLfIEQdQYyNf_lY-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;curved=1;" target="t-E3fyLfIEQdQYyNf_lY-43">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="270" y="440" />
+              <mxPoint x="270" y="555" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-30" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="대기중인 스레드ID" vertex="1">
+          <mxGeometry height="30" width="60" x="305" y="425" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-32" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;horizontal=1;fontStyle=1;fontSize=16;" value="..." vertex="1">
+          <mxGeometry height="30" width="40" x="642" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-39" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="스레드ID" vertex="1">
+          <mxGeometry height="20" width="90" x="465" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-41" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="스레드ID" vertex="1">
+          <mxGeometry height="20" width="90" x="555" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-81" edge="1" parent="1" source="t-E3fyLfIEQdQYyNf_lY-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;curved=1;" target="t-E3fyLfIEQdQYyNf_lY-26">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="720" y="555" />
+              <mxPoint x="720" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-43" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="60" width="380" x="305" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-44" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;fontStyle=0" value="릴리즈 스레드 리스트(Release Thread List)" vertex="1">
+          <mxGeometry height="30" width="350" x="305" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-45" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="스레드ID" vertex="1">
+          <mxGeometry height="20" width="90" x="375" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-74" edge="1" parent="1" source="t-E3fyLfIEQdQYyNf_lY-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" target="t-E3fyLfIEQdQYyNf_lY-50">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="270" y="578" />
+              <mxPoint x="270" y="700" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-46" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="완료통지 처리중인 스레드ID" vertex="1">
+          <mxGeometry height="30" width="60" x="305" y="555" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-47" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;horizontal=1;fontStyle=1;fontSize=16;" value="..." vertex="1">
+          <mxGeometry height="30" width="40" x="642" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-48" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="스레드ID" vertex="1">
+          <mxGeometry height="20" width="90" x="465" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-49" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="스레드ID" vertex="1">
+          <mxGeometry height="20" width="90" x="555" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-80" edge="1" parent="1" source="t-E3fyLfIEQdQYyNf_lY-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;curved=1;" target="t-E3fyLfIEQdQYyNf_lY-43">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="720" y="685" />
+              <mxPoint x="720" y="585" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-50" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="60" width="380" x="305" y="670" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-51" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;fontStyle=0" value="일시정지 스레드 리스트(Paused Thread List)" vertex="1">
+          <mxGeometry height="30" width="350" x="305" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-52" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="스레드ID" vertex="1">
+          <mxGeometry height="20" width="90" x="375" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-53" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="실행도중 block된&lt;br&gt;스레드ID" vertex="1">
+          <mxGeometry height="30" width="60" x="305" y="685" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-54" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;horizontal=1;fontStyle=1;fontSize=16;" value="..." vertex="1">
+          <mxGeometry height="30" width="40" x="642" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-55" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="스레드ID" vertex="1">
+          <mxGeometry height="20" width="90" x="465" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-56" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="스레드ID" vertex="1">
+          <mxGeometry height="20" width="90" x="555" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-58" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;rounded=0;fontColor=default;labelBackgroundColor=none;" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space: pre;&quot;&gt;&lt;font style=&quot;&quot;&gt;GetQueuedCompletionStatus &lt;br&gt;함수에서 깨어나서 &lt;br&gt;완료통지를 처리함&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="240" x="20" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-63" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;rounded=0;fontColor=default;labelBackgroundColor=none;" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space: pre;&quot;&gt;완료통지를 처리하다가&lt;br/&gt;block됨&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="220" x="40" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-82" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontColor=default;labelBackgroundColor=none;" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space: pre;&quot;&gt;&lt;font style=&quot;&quot;&gt;&lt;br&gt;완료통지를 처리하고 다시&lt;br/&gt;GetQueuedCompletionStatus &lt;br/&gt;함수를 호출함&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="240" x="730" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="t-E3fyLfIEQdQYyNf_lY-83" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontColor=default;labelBackgroundColor=none;" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space: pre;&quot;&gt;block에서 깨어남&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="220" x="730" y="610" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -180,5 +180,57 @@ for(int i=0; i<10; ++i)
 }
 ```
 
-## IOCP의 스레드 관리 방식
+## IOCP 구조
+IOCP는 IOCP에 연결된 장치(소켓, 파일핸들 등)와 스레드를 관리하기 위해 아래와 같은 데이터 구조들을 사용한다.  
 
+![IOCP](/assets/img/posts/2026-02-25-Network-IOCP-img.png)
+
+
+#### 1. 장치 리스트(Device List)는 
+장치 리스트는 CreateIoCompletionPort 함수로 IOCP에 연결된 장치(소켓, 파일핸들 등)와 CompletionKey를 저장한다.  
+
+#### 2. I/O 컴플리션 큐(I/O Completion Queue)
+I/O 컴플리션 큐는 FIFO(First In First Out)방식으로 작동한다.  
+장치에 대한 I/O가 완료되면 결과가 I/O 컴플리션 큐에 삽입된다.  
+
+#### 3. 대기 스레드 큐(Waiting Thread Queue)
+대기 스레드 큐는 GetQueuedCompletionStatus 함수를 호출하여 block된 스레드의 스레드ID가 입력된다.  
+GetQueuedCompletionStatus 함수를 한번이라도 호출한 스레드는 IOCP에 의해 관리되는 스레드가 된다. 관리상태를 해제하는 방법은 없다.  
+I/O 컴플리션 큐에 완료통지가 도착하면 대기 스레드 큐에 있는 스레드 중 1개를 깨워서 완료통지를 처리하게 한다.  
+
+대기 스레드 큐는 LIFO(Last In First Out)방식으로 작동한다.  
+그 말은 가장 마지막에 대기 스레드 큐에 들어온 스레드가 가장 먼저 깨어난다는 것이다.  
+만약 어떤 스레드가 깨어나서 완료통지를 처리하고 GetQueuedCompletionStatus 함수를 다시 호출했다고 하자.  
+그런다음 I/O 컴플리션 큐에 완료통지가 도착하면 방금 GetQueuedCompletionStatus 함수를 호출한 스레드가 다시 깨어난다.  
+
+이렇게 최대한 동일 스레드가 완료통지를 계속해서 처리할 수 있게 하면 다음과 같은 이득이 있다:
+- 오랫동안 실행되지 않은 스레드에 대한 캐시메모리를 비우거나 물리메모리를 page-out 할 수 있다.
+
+#### 4. 릴리즈 스레드 리스트(Release Thread List)
+릴리즈 스레드 리스트에는 완료통지를 처리중이면서 block되지 않은 스레드의 스레드ID가 저장된다.  
+
+GetQueuedCompletionStatus 함수를 호출했던 스레드가 완료통지를 받아 깨어나면 해당 스레드의 ID는 대기 스레드 큐에서 제거되고 릴리즈 스레드 리스트에 삽입된다.  
+ICOP는 '한 시점에 최대로 실행가능한 Worker 스레드 수(NumberOfConcurrentThreads)'를 제한하고 있기 때문에, 릴리즈 스레드 리스트에 있는 스레드의 수가 NumberOfConcurrentThreads 이상이라면 완료통지가 추가로 도착해도 대기중인 스레드를 깨우지 않는다.  
+이렇게 실행중인 Worker 스레드의 수를 제한하면 아래와 같은 이점이 있다:
+- CPU 코어 개수보다 많은 스레드가 동시에 실행되지 않도록 하여 스레드 context switching 횟수를 최소화한다.
+
+만약 실행중인 스레드가 GetQueuedCompletionStatus 함수를 호출하여 다시 block 된다면 해당 스레드ID는 릴리즈 스레드 리스트에서 제거되고 대기 스레드 큐에 삽입된다.  
+
+#### 5. 일시정지 스레드 리스트(Paused Thread List)
+일시정지 스레드 리스트는 완료통지 처리도중에 block된 스레드ID를 관리한다.  
+스레드가 완료통지를 처리하다가 I/O 작업 대기, lock 획득 대기, 이벤트 객체가 signal되기를 기다리는 등으로 block될 경우 해당 스레드는 릴리즈 스레드 리스트에서 제거되고 일시정지 스레드 리스트에 삽입된다.  
+
+만약 스레드가 일시정지 스레드 리스트에 삽입되었다면 릴리즈 스레드 리스트의 스레드수가 감소했다는 것을 의미한다.  
+그래서 대기중인 스레드가 추가로 깨어날 수 있다.  
+
+일시정지 스레드가 block에서 깨어나면 이 스레드는 일시정지 스레드 리스트에서 제거되고 릴리즈 스레드 리스트에 삽입된다.  
+그래서 아래와 같은 시나리오에서는 릴리즈 스레드 리스트에 있는 스레드 수가 NumberOfConcurrentThreads를 초과할 수 있다:
+1. NumberOfConcurrentThreads가 4라고 가정한다.
+2. 4개의 스레드가 실행도중에 block 되었다.
+3. 4개의 스레드가 추가로 깨어나서 완료통지를 처리하고있다.
+4. block 되었던 4개의 스레드가 block에서 깨어났다.
+5. 결과적으로 릴리즈 스레드 리스트에는 8개 스레드가 들어있다.
+
+이런 상황이 발생하면 스레드의 수가 예상보다 많아져서 context switching 횟수가 증가할 수 있다.  
+이런 동작방식을 고려하여 프로그래밍 한다면, 스레드가 block되는 로직은 최대한 코드의 마지막 부분에 두는 것이 좋다.  
+왜냐하면 코드의 마지막 부분에서 스레드가 block 된다면 스레드가 깨어났을 때 아주 조금만 작업을 하면 다시 GetQueuedCompletionStatus를 호출할 수 있기 때문이다.  
