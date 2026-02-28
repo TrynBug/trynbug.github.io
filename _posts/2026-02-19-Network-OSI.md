@@ -11,8 +11,7 @@ description: 네트워크 OSI 7계층
 OSI 7계층(Open System Interconnection 7 Layers) 모델은 여러 컴퓨터나 네트워크 장비들이 원활하게 통신할 수 있도록 국제표준화기구(ISO)에서 만든 네트워크 표준 모델이다.  
 TCP/IP 4계층은 인터넷 환경에서 개발할 때 실질적으로 사용하는 OSI 7계층의 간소화 버전이라고 보면 된다.  
 
-![Buffer](/assets/img/posts/2026-02-19-Network-OSI-img.png)
-
+![OSI](/assets/img/posts/2026-02-19-Network-OSI-img.svg)
 
 ### 1. 물리계층 (Physical Layer)
 - 실질적인 물리적 전송을 담당하는 계층이다.

@@ -87,7 +87,7 @@ ready queue에는 실행되기를 기다리는 스레드의 TCB(Thread Control B
 스케줄러는 ready queue에서 우선순위가 가장 높은 TCB 1개를 꺼내서 core에 입력하여 스레드를 실행시킨다.  
 스레드가 실행되다가 자신의 quantum을 다 쓰면 스케줄러가 해당 스레드를 정지시키고 ready queue의 가장 뒤에 삽입한다.  
 
-![ready queue](/assets/img/posts/2026-02-21-Network-Mutlthread-scheduler-img.png)
+![ready queue](/assets/img/posts/2026-02-21-Network-Mutlthread-scheduler-img.svg)
 
 스케줄러는 TCB를 다른 core의 ready queue에 넣을수도 있다.  
 예를들면 core1의 ready queue에는 TCB가 많이 있는데, core2의 ready queue에 TCB가 없다면 TCB중 일부를 core2의 ready queue에 넣어줄 수도 있다.  

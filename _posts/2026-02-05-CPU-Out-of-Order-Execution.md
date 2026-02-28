@@ -19,7 +19,7 @@ STORE 명령어와 데이터를 모아두는 곳을 Store Buffer, LOAD 명령어
 Store Buffer와 Load Buffer는 서로 통신할 수 있다.  
 만약 Load Buffer에서 읽어야 하는 데이터가 Store Buffer에 있다면 Store Buffer에서 가져온다.
 
-![Buffer](/assets/img/posts/2026-02-05-CPU-Out-of-Order-Execution-img.png)
+![Buffer](/assets/img/posts/2026-02-05-CPU-Out-of-Order-Execution-img.svg)
 
 
 ## 2. Store Buffer
@@ -27,7 +27,7 @@ Store Buffer와 Load Buffer는 서로 통신할 수 있다.
 그래서 CPU는 메모리에 기록이 완료되는것을 기다리는 대신에 store buffer에 넣어두고 다음 명령을 수행한다.  
 store buffer에 있는 데이터는 알고리즘에 의해 나중에 메모리에 실제로 write 된다.  
 
-![StoreBuffer](/assets/img/posts/2026-02-05-CPU-Out-of-Order-Execution-img-storebuffer.png)
+![StoreBuffer](/assets/img/posts/2026-02-05-CPU-Out-of-Order-Execution-img-storebuffer.svg)
 
 아래와 같은 코드가 있다.
 ```cpp

@@ -183,7 +183,7 @@ for(int i=0; i<10; ++i)
 ## IOCP 구조
 IOCP는 IOCP에 연결된 장치(소켓, 파일핸들 등)와 스레드를 관리하기 위해 아래와 같은 데이터 구조들을 사용한다.  
 
-![IOCP](/assets/img/posts/2026-02-25-Network-IOCP-img.png)
+![IOCP](/assets/img/posts/2026-02-25-Network-IOCP-img.svg)
 
 
 #### 1. 장치 리스트(Device List)는 
