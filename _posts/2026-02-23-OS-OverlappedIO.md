@@ -3,7 +3,7 @@ title: Overlapped I/O
 date: 2026-02-23 00:50:58 +0900
 categories: [OS, I/O]
 tags: [OS, I/O]
-description: Overlapped I/O
+description: Overlapped I/O, 비동기 I/O
 ---
 
 ## Overlapped I/O

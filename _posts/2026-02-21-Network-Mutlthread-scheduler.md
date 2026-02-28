@@ -3,7 +3,7 @@ title: 스케줄러
 date: 2026-02-21 21:59:00 +0900
 categories: [멀티스레드, Thread]
 tags: [network, thread, scheduler]
-description: 스케줄러
+description: Windows OS의 스케줄러
 ---
 
 ## OS의 스레드 스케줄링 방식

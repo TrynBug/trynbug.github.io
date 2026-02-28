@@ -3,7 +3,7 @@ title: TCP 소켓
 date: 2026-02-19 20:20:33 +0900
 categories: [네트워크, TCP]
 tags: [network, TCP]
-description: TCP 소켓
+description: TCP 소켓에 대하여
 ---
 
 ## 3-way handshake

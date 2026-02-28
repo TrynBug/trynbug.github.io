@@ -3,7 +3,7 @@ title: SRWLock
 date: 2026-02-08 22:01:24 +0900
 categories: [멀티스레드, 동기화]
 tags: [multithread, synchronization]
-description: SRWLock
+description: Windows의 SRWLock 동기화객체
 ---
 
 ## 1. SRWLock

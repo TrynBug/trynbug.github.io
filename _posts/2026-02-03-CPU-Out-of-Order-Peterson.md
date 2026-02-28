@@ -3,7 +3,7 @@ title: 피터슨 알고리즘의 문제점
 date: 2026-02-05 00:18:40 +0900
 categories: [CPU, Out-of-Order-Execution]
 tags: [cpu, outofordering]
-description: 피터슨 알고리즘의 문제점
+description: CPU의 Out-of-Order-Execution 때문에 피터슨 알고리즘에 문제가 생기는 이유
 ---
 
 ## 1. 피터슨 알고리즘(Peterson's Algorithm)

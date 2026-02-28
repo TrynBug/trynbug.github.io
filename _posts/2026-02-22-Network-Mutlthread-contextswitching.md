@@ -3,7 +3,7 @@ title: Context Switching
 date: 2026-02-22 21:15:32 +0900
 categories: [멀티스레드, Thread]
 tags: [network, thread]
-description: Context Switching
+description: 스레드 Context Switching
 mermaid: true
 ---
 

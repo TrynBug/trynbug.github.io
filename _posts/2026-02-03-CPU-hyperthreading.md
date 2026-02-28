@@ -3,7 +3,7 @@ title: 하이퍼스레딩
 date: 2026-02-03 23:25:02 +0900
 categories: [CPU, 하이퍼스레딩]
 tags: [cpu, hyperthread]
-description: 하이퍼스레딩
+description: 하이퍼스레딩에 대하여
 ---
 
 ## 1. 하이퍼스레딩

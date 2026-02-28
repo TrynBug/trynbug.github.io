@@ -3,7 +3,7 @@ title: WaitOnAddress 동기화방식
 date: 2026-02-08 15:53:27 +0900
 categories: [멀티스레드, 동기화]
 tags: [multithread, synchronization]
-description: WaitOnAddress 동기화방식
+description: Windows의 WaitOnAddress 동기화방식
 ---
 
 ## 1. WaitOnAddress 동기화

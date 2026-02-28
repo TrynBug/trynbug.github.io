@@ -3,7 +3,7 @@ title: std::mutex
 date: 2026-02-08 22:01:24 +0900
 categories: [멀티스레드, 동기화]
 tags: [multithread, synchronization]
-description: std::mutex
+description: c++ 표준 동기화객체 std::mutex
 ---
 
 ## 1. std::mutex

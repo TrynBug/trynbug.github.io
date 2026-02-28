@@ -3,7 +3,7 @@ title: atomic 변수와 memory order
 date: 2026-02-03 11:08:03 +0900
 categories: [멀티스레드, Programming]
 tags: [multithread, atomic]
-description: atomic 변수와 memory order
+description: atomic 변수를 사용할 때의 memory order 옵션들 살펴보기
 ---
 
 참고: 이 문서는 x86-64 아키텍처 기준입니다.  

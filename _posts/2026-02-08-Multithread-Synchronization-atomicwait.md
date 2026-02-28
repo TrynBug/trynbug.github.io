@@ -3,7 +3,7 @@ title: std::atomic::wait
 date: 2026-02-09 23:41:21 +0900
 categories: [멀티스레드, 동기화]
 tags: [multithread, synchronization]
-description: std::atomic::wait
+description: c++ 표준 동기화도구 std::atomic::wait
 ---
 
 ## 1. std::atomic::wait

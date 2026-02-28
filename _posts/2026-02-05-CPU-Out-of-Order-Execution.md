@@ -3,7 +3,7 @@ title: Out-of-Order-Execution
 date: 2026-02-05 23:13:30 +0900
 categories: [CPU, Out-of-Order-Execution]
 tags: [cpu, outofordering]
-description: Out-of-Order-Execution
+description: CPU가 Out-of-Order-Execution으로 성능을 높이는 방법
 ---
 
 ## 1. Out-of-Order-Execution

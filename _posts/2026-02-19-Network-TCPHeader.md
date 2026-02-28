@@ -3,7 +3,7 @@ title: TCP 헤더
 date: 2026-02-19 15:42:40 +0900
 categories: [네트워크, TCP]
 tags: [network, TCP]
-description: TCP 헤더
+description: TCP 패킷의 헤더 분석
 ---
 
 ## TCP Segment
