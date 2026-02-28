@@ -1,0 +1,26 @@
+---
+---
+
+/* prettier-ignore */
+@use 'main
+{%- if jekyll.environment == 'production' -%}
+  .bundle
+{%- endif -%}
+';
+
+/* details 태그 내의 summary 스타일 커스텀 */
+details {
+  summary {
+    font-size: 1.25rem; /* 글자 크기를 키움 (기본값보다 크게) */
+    font-weight: bold; /* 글자를 굵게 */
+    padding: 10px; /* 여백 추가로 클릭 영역 확보 */
+    cursor: pointer; /* 마우스 커서를 손가락 모양으로 변경 */
+    color: var(--text-color); /* 테마 색상을 따라감 */
+    background-color: var(--sidebar-bg); /* 배경색 추가 */
+    border-radius: 5px; /* 모서리 둥글게 */
+
+    &:hover {
+      color: var(--link-color); /* 마우스 올렸을 때 색상 변화 */
+    }
+  }
+}
