@@ -1,0 +1,84 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36" version="29.6.0">
+  <diagram name="페이지-1" id="D5F2wlWTFOALa_qOFXEV">
+    <mxGraphModel dx="2066" dy="1137" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="y_r2vIYKPKYVP3wiDfNT-9" edge="1" parent="1" source="y_r2vIYKPKYVP3wiDfNT-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="y_r2vIYKPKYVP3wiDfNT-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y_r2vIYKPKYVP3wiDfNT-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" value="START" vertex="1">
+          <mxGeometry height="40" width="120" x="195" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="y_r2vIYKPKYVP3wiDfNT-10" edge="1" parent="1" source="y_r2vIYKPKYVP3wiDfNT-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="y_r2vIYKPKYVP3wiDfNT-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y_r2vIYKPKYVP3wiDfNT-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" value="CPU가 TLB에 &lt;br&gt;메모리주소 변환 요청함" vertex="1">
+          <mxGeometry height="60" width="140" x="185" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="y_r2vIYKPKYVP3wiDfNT-11" edge="1" parent="1" source="y_r2vIYKPKYVP3wiDfNT-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="y_r2vIYKPKYVP3wiDfNT-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y_r2vIYKPKYVP3wiDfNT-3" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" value="TLB에 찾는&lt;br&gt;정보가 있는가?" vertex="1">
+          <mxGeometry height="80" width="150" x="180" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="y_r2vIYKPKYVP3wiDfNT-17" edge="1" parent="1" source="y_r2vIYKPKYVP3wiDfNT-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="y_r2vIYKPKYVP3wiDfNT-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y_r2vIYKPKYVP3wiDfNT-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" value="Page Table에서 찾음" vertex="1">
+          <mxGeometry height="60" width="140" x="185" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="y_r2vIYKPKYVP3wiDfNT-16" edge="1" parent="1" source="y_r2vIYKPKYVP3wiDfNT-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="y_r2vIYKPKYVP3wiDfNT-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y_r2vIYKPKYVP3wiDfNT-6" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" value="찾는 메모리가 &lt;br&gt;물리메모리에 있는가?" vertex="1">
+          <mxGeometry height="80" width="150" x="180" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="y_r2vIYKPKYVP3wiDfNT-15" edge="1" parent="1" source="y_r2vIYKPKYVP3wiDfNT-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="y_r2vIYKPKYVP3wiDfNT-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y_r2vIYKPKYVP3wiDfNT-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" value="TLB를 업데이트 한다" vertex="1">
+          <mxGeometry height="60" width="140" x="185" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="y_r2vIYKPKYVP3wiDfNT-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" value="CPU가 물리메모리 &lt;br&gt;주소를 획득함" vertex="1">
+          <mxGeometry height="60" width="140" x="185" y="790" as="geometry" />
+        </mxCell>
+        <mxCell id="y_r2vIYKPKYVP3wiDfNT-12" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontStyle=1" value="NO" vertex="1">
+          <mxGeometry height="30" width="60" x="250" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="y_r2vIYKPKYVP3wiDfNT-13" edge="1" parent="1" source="y_r2vIYKPKYVP3wiDfNT-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.617;entryDx=0;entryDy=0;entryPerimeter=0;" target="y_r2vIYKPKYVP3wiDfNT-8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="110" y="310" />
+              <mxPoint x="110" y="827" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="y_r2vIYKPKYVP3wiDfNT-14" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontStyle=1" value="YES" vertex="1">
+          <mxGeometry height="30" width="60" x="120" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="y_r2vIYKPKYVP3wiDfNT-18" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontStyle=1" value="YES" vertex="1">
+          <mxGeometry height="30" width="60" x="250" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="y_r2vIYKPKYVP3wiDfNT-28" edge="1" parent="1" source="y_r2vIYKPKYVP3wiDfNT-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="y_r2vIYKPKYVP3wiDfNT-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y_r2vIYKPKYVP3wiDfNT-19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" value="OS가 메모리 page를 &lt;br&gt;디스크에서 가져옴" vertex="1">
+          <mxGeometry height="60" width="140" x="470" y="522" as="geometry" />
+        </mxCell>
+        <mxCell id="y_r2vIYKPKYVP3wiDfNT-21" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;NO&lt;/b&gt;&lt;br&gt;찾는 page가 page-out 되었음" vertex="1">
+          <mxGeometry height="50" width="90" x="350" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="y_r2vIYKPKYVP3wiDfNT-29" edge="1" parent="1" source="y_r2vIYKPKYVP3wiDfNT-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="y_r2vIYKPKYVP3wiDfNT-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y_r2vIYKPKYVP3wiDfNT-24" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" value="Page Table 업데이트" vertex="1">
+          <mxGeometry height="60" width="140" x="470" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="y_r2vIYKPKYVP3wiDfNT-27" edge="1" parent="1" source="y_r2vIYKPKYVP3wiDfNT-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=-0.014;entryY=0.633;entryDx=0;entryDy=0;entryPerimeter=0;" target="y_r2vIYKPKYVP3wiDfNT-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
