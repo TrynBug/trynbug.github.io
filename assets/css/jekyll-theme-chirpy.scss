@@ -24,3 +24,9 @@ details {
     }
   }
 }
+
+/* 글 안의 Contents 목록의 하위 항목들을 처음부터 모두 펼쳐진 상태로 표시함 */
+#toc .toc-list.is-collapsed,
+#toc-popup-content .toc-list.is-collapsed {
+  max-height: none !important;
+}

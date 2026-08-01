@@ -4,5 +4,7 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-> Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
-{: .prompt-tip }
+> 게임 서버 개발자 김형섭 입니다.  
+> 게임 서버 구조와 네트워크 프로그래밍을 공부하며,  
+> 직접 구현한 내용과 문제를 해결하는 과정에서 배운 것들을 기록합니다.  
+> 주로 C++, 네트워크, 멀티스레딩, 그리고 MMO 게임 서버 개발에 관한 내용을 다룹니다.  
