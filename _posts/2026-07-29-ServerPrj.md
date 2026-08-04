@@ -343,8 +343,9 @@ end
 ## 더미 테스트
 > 서버 안정성 확인을 위해 더미 테스트를 수행합니다.
 
-### AWS 인스턴스 구성
+### AWS EC2 인스턴스 구성
 ![drawio](/assets/img/posts/2026-07-29/GameServer-더미테스트.drawio.svg)
+_AWS EC2 인스턴스 구성_
 ![drawio](/assets/img/posts/2026-07-29/AWS_EC2.png)
 _AWS EC2 스크린샷_
 ![drawio](/assets/img/posts/2026-07-29/AWS_VPC.png)
