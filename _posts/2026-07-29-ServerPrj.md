@@ -1,9 +1,9 @@
 ---
-title: MMO 게임서버 / 클라이언트 개발 프로젝트
+title: MMO 게임서버 / 클라이언트 개발 프로젝트 (2026)
 date: 2026-07-29 11:12:49 +0900
 categories: [프로젝트, 게임서버]
 tags: [project, gameserver]
-description: 개인 MMORPG 게임서버 / 클라이언트 개발 프로젝트
+description: 개인 MMORPG 게임서버 / 클라이언트 개발 프로젝트 (2026)
 ---
 
 ## 프로젝트 개요
