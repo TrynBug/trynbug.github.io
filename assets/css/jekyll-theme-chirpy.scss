@@ -30,3 +30,33 @@ details {
 #toc-popup-content .toc-list.is-collapsed {
   max-height: none !important;
 }
+
+/* 스크롤 박스 */
+.scroll-box {
+  max-height: 600px;
+  overflow: auto;
+  padding: 20px;
+  margin-top: 15px;
+
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  background-color: #f6f8fa;
+}
+
+/* TOC 에 안잡히는 h2 태그 */
+/* 사용법 : <div class="sample-h2">라이브러리 관리 방식</div>*/
+.sample-h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* TOC 에 안잡히는 h3 태그 */
+/* 사용법 : <div class="sample-h3">라이브러리 관리 방식</div>*/
+.sample-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.6rem;
+}

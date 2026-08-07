@@ -18,19 +18,199 @@ Unity 클라이언트와 C++ MMORPG 서버를 함께 개발하는 프로젝트 �
 | 모니터링   | Prometheus · Grafana                           |
 
 - 개발기간: 2026.04.24 ~ 2026.07.30
-- 소스코드 : https://github.com/TrynBug/MMOGameServerProject
+- 소스코드 : [https://github.com/TrynBug/MMOGameServerProject](https://github.com/TrynBug/MMOGameServerProject)
 
-### 프로젝트 개발의 목표
-- 적은 컴퓨팅 자원으로도 안정적이고 효율적으로 돌아가는 서버를 설계하고 검증합니다.
-
-### AI 활용
-- 이 프로젝트는 AI를 적극적으로 활용하여 개발되었습니다.  
-- AI에게 정확한 개발 지시를 하기 위해 여러 설계 문서들을 사용하였습니다.  
-설계 문서는 github repository의 Document 폴더 참조.
+## 프로젝트 개발 목표
+- 서버 기능이 실제 게임에서 동작하는 전체 과정을 이해하고 직접 검증하기 위해 C++ 서버와 Unity 클라이언트를 함께 개발합니다.
+- 평소 관심 있었던 서버 기능을 직접 구현하고 검증합니다.
+  - 확장 가능한 서버 구조
+  - 게이트웨이 서버를 통한 클라이언트 연결 및 패킷 중계
+  - 효율적인 게임 서버 스레드 구성
+  - 코루틴을 활용한 비동기 DB 처리
+  - 게임 서버와 Lua 스크립트 연동
 
 ## 게임플레이 영상
 [https://youtu.be/19n7-ntqgbE](https://youtu.be/19n7-ntqgbE)
 ![img](/assets/img/posts/2026-07-29/인게임화면.png)
+
+## AI 활용
+- 이 프로젝트에서는 설계 검토, 코드 구현 및 반복 작업에 AI를 적극적으로 활용하였습니다.
+- AI에 구현을 요청하기 전에 요구사항을 직접 설계하고 문서화하였으며, AI를 활용하여 설계의 누락 사항과 예외 상황을 검토하였습니다.
+- AI가 생성하거나 수정한 서버 코드는 직접 검토하고 프로젝트 구조에 맞게 보완한 뒤 반영하였습니다.
+- 설계 문서는 [GitHub Repository의 Document 폴더](https://github.com/TrynBug/MMOGameServerProject/tree/main/Document)에서 확인할 수 있습니다.
+<details markdown="1">
+<summary style="cursor: pointer; font-weight: bold;">
+서버구조 설계문서 샘플 보기
+</summary>
+
+<div class="scroll-box" markdown="1">
+
+> 참고: 이 문서는 github repository의 Document 폴더의 서버구조개요.md 파일의 일부분 입니다.
+
+<div class="sample-h2">라이브러리 관리 방식</div>
+- 솔루션 내부에서 빌드되는 라이브러리 파일은 $(SolutionDir)OUTPUT/$(Configuration)/ 에 생성됩니다. 다른 프로젝트들은 이 폴더를 참조합니다. (프로젝트 속성 -> VC++ 디렉터리 -> 포함 디렉터리) 
+- 솔루션 내부에서 빌드되는 라이브러리의 include 헤더파일은 각각의 라이브러리 프로젝트 안에 그대로 있습니다. 다른 프로젝트들은 각각 라이브러리 프로젝트의 폴더를 참조하여 사용합니다. (프로젝트 속성 -> VC++ 디렉터리 -> 라이브러리 디렉터리)
+- vcpkg로 설치되는 라이브러리(protobuf 등) 파일은 $(SolutionDir)vcpkg/x64-windows-static-md-2022/lib/$(Configuration) 에 있습니다. 다른 프로젝트들은 이 폴더를 참조합니다. (프로젝트 속성 -> VC++ 디렉터리 -> 포함 디렉터리)
+- vcpkg로 설치되는 라이브러리의 include 헤더파일은 $(SolutionDir)vcpkg/x64-windows-static-md-2022/include/ 에 있습니다. 다른 프로젝트들은 이 폴더를 참조합니다. (프로젝트 속성 -> VC++ 디렉터리 -> 라이브러리 디렉터리) 
+- 라이브러리 링크는 프로젝트 속성에서 수동으로 입력합니다. (프로젝트 속성 -> 링커 -> 입력 -> 추가 종속성)
+- protobuf와 관련된 라이브러리는 숫자가 너무 많기 때문에 .props 파일로 따로 관리하고 있습니다.
+	- $(SolutionDir)Common 폴더에 ProjectPropertyMacro.props 파일이 있는데, 여기에 ProtobufLibs, ProtobufLibsDebug 매크로가 정의되어 있습니다.
+	- 프로젝트 속성에서 $(ProtobufLibs), $(ProtobufLibsDebug) 매크로로 링크할 라이브러리를 입력합니다. (프로젝트 속성 -> 링커 -> 입력 -> 추가 종속성)
+	- (visual studio에서 프로젝트에 .props 파일 추가하는방법: 보기 -> 다른창 -> 속성관리자 -> 프로젝트 우클릭 -> 기존 속성시트 추가
+
+<div class="sample-h2">서버 설정파일 위치</div>
+서버 설정파일의 이름은 "서버명.ini" 입니다. (예: GameServer.ini)  
+설정파일은 exe파일이 생성되는 위치인 $(SolutionDir)OUTPUT/$(Configuration)/ 에 있습니다.  
+visual studio에서 디버깅 할때도 $(SolutionDir)OUTPUT/$(Configuration)/ 에 있는것을 사용합니다. (프로젝트속성->디버깅->작업디렉터리 설정해놔서 이렇게 작동함)
+
+<div class="sample-h2">외부 라이브러리</div>
+- vcpkg로 관리
+	- protobuf 6.33.4
+	- spdlog 1.17.0
+	- lua 5.4.7
+	- sol2 3.5.0
+- 직접 관리
+	- libmysql.dll, libcrypto-3-x64.dll, libmysql.dll, libssl-3-x64.dll
+	- Recast, Detour, DetourTileCache 1.6.0
+	- nlohmann/json 3.12.0
+	- cpp-httplib 0.50.1
+
+<div class="sample-h2">패킷</div>
+- 모든 패킷은 PacketGenerator 프로젝트가 protoc 로 생성합니다.  
+- 패킷 ID는 PacketGenerator 프로젝트의 packet_id.proto 를 참조하면 됩니다.  
+	- 유저와 서버가 주고받는 패킷ID는 enum GamePacketId 에 있습니다.  
+	- 서버와 서버가 주고받는 패킷ID는 enum ServerPacketId 에 있습니다.   
+
+<div class="sample-h3">게임 ↔ 게이트웨이 ↔ 클라 패킷 전송 (Sidecar 방식)</div>
+- 게임서버 ↔ 클라 패킷은 별도의 래핑 패킷 없이 **Sidecar로 라우팅 정보만 끼워** 전달합니다. (상세: NetLib.md Sidecar 참조)
+	- 클라 → 게임: 게이트웨이가 원본 클라 패킷에 보낸 유저의 AccountId를 sidecar로 붙여 게임서버로 relay.
+	- 게임 → 클라: 게임서버가 클라용 패킷에 수신자 AccountId 목록을 sidecar로 붙여 게이트웨이로 전송 → 게이트웨이가 sidecar를 떼고 대상 클라들에게 전달.
+- **브로드캐스트**: 게임서버는 payload를 1회만 직렬화하고 수신자를 게이트웨이별로 묶어, 게이트웨이당 패킷 1개(수신자 AccountId 목록 sidecar)로 보냅니다. 게이트웨이는 그 버퍼 1개를 대상 클라들에게 공유 전송합니다.
+- 글로벌 유저맵(accountId → User/세션)은 매 패킷 조회되는 핫 경로라 샤딩된 thread-safe map(`ShardedThreadSafeUnorderedMap`, Common 폴더)을 사용합니다.
+
+<div class="sample-h2">서버 연결 토폴로지</div>
+
+<div class="sample-h3">연결 방향 규칙</div>
+- **연결 방향 표기**: "A → B" 는 A가 connect 측(Connector), B가 listen 측(Listener) 임을 의미합니다.
+- **클라이언트(Client)** 는 외부 유저(Unity)를 의미합니다. 클라이언트는 항상 Connector 입니다.
+- **레지스트리 서버는 모든 서버 연결의 허브가 아닙니다**. 단지 서버 정보를 중계하는 역할만 합니다. 실제 서버간 데이터 통신은 레지스트리를 거치지 않습니다.
+- **포트 분리 정책**: 클라이언트용 포트와 서버 내부 통신용 포트를 분리합니다. ServerBase에 클라이언트용 NetServer와 내부서버용 NetServer가 구분되어 있습니다.
+
+<div class="sample-h3">전체 연결 토폴로지 표</div>
+
+| Connector (연결하는 쪽) | Listener (받는 쪽) | 연결 개수      | 연결 시점                            | 용도                                              |
+| ----------------------- | ------------------ | -------------- | ------------------------------------ | ------------------------------------------------- |
+| 클라이언트              | 로그인 서버        | 1 → 1          | 클라이언트 최초 접속                 | ID/Password 인증, 인증토큰 발급                   |
+| 클라이언트              | 게이트웨이 서버    | 1 → 1          | 로그인 성공 후                       | 게임플레이용 메인 통신                            |
+| 로그인 서버             | 레지스트리 서버    | 1 → 1          | 로그인 서버 시작 시                  | 자기 등록, 게이트웨이 정보 폴링                   |
+| 게이트웨이 서버         | 레지스트리 서버    | N → 1          | 게이트웨이 서버 시작 시              | 자기 등록, 로그인/게임서버 정보 폴링              |
+| 게임 서버               | 레지스트리 서버    | M → 1          | 게임 서버 시작 시                    | 자기 등록, 게이트웨이 정보 폴링                   |
+| CommunicationServer     | 레지스트리 서버    | 1 → 1          | CommunicationServer 시작 시          | 자기 등록, 게임서버 정보 폴링                     |
+| 로그인 서버             | 게이트웨이 서버    | 1 → N (모든쌍) | 로그인서버가 게이트웨이 정보 수신 후 | 클라이언트 인증토큰 사전 등록                     |
+| 게임 서버               | 게이트웨이 서버    | M → N (모든쌍) | 게임서버가 게이트웨이 정보 수신 후   | 클라이언트 패킷 수신, 클라이언트에 패킷 송신 요청 |
+| CommunicationServer     | 게임 서버          | 1 → M (모든쌍) | 게임서버 정보 수신 후                | 전체 채팅 fan-out, 귓속말·presence 라우팅         |
+
+<div class="sample-h3">서버별 연결 책임 (Listener / Connector 명세)</div>
+
+각 서버가 어떤 포트를 열어 받고(Listener), 어떤 서버에 능동적으로 연결하는지(Connector) 명확히 합니다.
+
+**레지스트리 서버**
+- **InternalListener**: 모든 서버의 등록/폴링/하트비트 응답을 받는 포트
+- **Connector**: 없음 (다른 서버에 능동적으로 connect하지 않음)
+
+**로그인 서버**
+  **ClientListener**:
+  - 클라이언트 로그인 요청 받는 포트
+- **Connector**:
+  - 레지스트리 서버에 connect (자기 등록 + 게이트웨이 정보 폴링)
+  - 모든 게이트웨이 서버에 connect (인증토큰 사전 등록 용도)
+
+**게이트웨이 서버**
+- **InternalListener**:
+  -  서버 내부 통신(게임서버, 로그인서버로부터)을 받는 포트
+- **ClientListener**:
+  - 클라이언트 접속 을 받는 포트
+- **Connector**:
+  - 레지스트리 서버에 connect
+
+**게임 서버**
+- **InternalListener**:
+  - CommunicationServer로부터의 연결을 받는 내부 서버 포트
+- **Connector**:
+  - 레지스트리 서버에 connect
+  - 모든 게이트웨이 서버에 connect
+
+**CommunicationServer**
+- **Listener**: 없음
+- **Connector**:
+  - 레지스트리 서버에 connect
+  - 모든 게임 서버에 connect
+
+**권장 시작 순서 요약**
+```
+1. 레지스트리 서버
+2. 로그인 서버, 게이트웨이 서버 (병렬 가능)
+3. 게임 서버
+4. CommunicationServer
+```
+> 단, 이 순서는 "정상 기동 시 권장" 일 뿐이며, 서버는 모두 **재연결을 무한히 시도**하는 구조이므로 어떤 순서로 시작해도 결국 정상 상태에 수렴합니다.
+
+<div class="sample-h2">서버 정보 전파 방식: Push + Pull 이중화</div>
+
+레지스트리 서버는 **두 가지 메커니즘**으로 서버 정보를 다른 서버에 전파합니다.
+
+| 메커니즘               | 주체                     | 빈도             | 용도                                                                  |
+| ---------------------- | ------------------------ | ---------------- | --------------------------------------------------------------------- |
+| **Push (이벤트 전파)** | 레지스트리 → 다른 서버들 | 이벤트 발생 즉시 | 신규 등록, 연결 끊김, 종료대기 플래그 변경 등의 상태 변경을 즉시 알림 |
+| **Pull (주기적 폴링)** | 다른 서버 → 레지스트리   | 1분마다          | Push 누락 보완 + 레지스트리 재시작 시 자동 복구용 (fallback)          |
+
+<div class="sample-h3">이중화 이유</div>
+- **Push만 사용 시**: 네트워크 일시 단절로 Push가 누락되면 상태가 영구히 어긋날 수 있음
+- **Pull만 사용 시**: 신규 게임서버 등록 후 최대 1분간 다른 서버가 그 존재를 모름 (실시간 확장 어려움)
+- **둘 다 사용**: Push로 빠른 반영, Pull로 정합성 보장
+
+<div class="sample-h3">폴링 대상</div>
+
+| 서버                | 폴링 대상                   |
+| ------------------- | --------------------------- |
+| 로그인 서버         | 게이트웨이 서버 정보        |
+| 게이트웨이 서버     | 로그인 서버, 게임 서버 정보 |
+| 게임 서버           | 게이트웨이 서버 정보        |
+| CommunicationServer | 게임 서버 정보              |
+
+<div class="sample-h2">서버 재연결 주기</div>
+| 재연결 대상                    | 재시도 주기 | 비고                   |
+| ------------------------------ | ----------- | ---------------------- |
+| 레지스트리 연결                | **10초**    | 빠르게 재연결하기 위함 |
+| 게임서버 ↔ 게이트웨이서버      | **1분**     |                        |
+| 로그인서버 → 게이트웨이서버    | **1분**     |                        |
+| CommunicationServer → 게임서버 | **1분**     | NetClient 자동 재연결  |
+
+
+<div class="sample-h2">서버 ID 관리</div>
+
+<div class="sample-h3">서버 ID 발급 방식: Config 하드코딩 + 레지스트리 서버가 검증</div>
+
+서버 ID는 **각 서버의 config 파일에 하드코딩**하며, 레지스트리 서버는 **충돌 검증**만 담당합니다.
+
+**서버 ID 사전 할당 정책**  
+서버 ID는 1~999 범위입니다. 운영 초기에 다음과 같이 ID 풀을 사전 할당합니다.
+
+| 서버 종류         | 할당 ID 범위 | 비고                        |
+| ----------------- | ------------ | --------------------------- |
+| 레지스트리 서버   | 1            | 1대만 존재                  |
+| 로그인 서버       | 10           | 1대만 존재                  |
+| 커뮤니케이션 서버 | 20           | 현재 1대만 존재             |
+| 게이트웨이 서버   | 100~199      | 최대 100대                  |
+| 게임 서버         | 200~899      | 최대 700대                  |
+| (예비)            | 900~999      | 향후 서버 종류 추가 시 사용 |
+
+**객체 ID 비트 구조**  
+`[0(1bit)] [Timestamp(43bit)] [ServerID(10bit)] [Sequence(10bit)]`
+데이터타입은 int64 입니다.
+객체ID 생성 기능은 ServerBase 프로젝트의 ObjectIdGenerator 클래스가 제공합니다.  
+</div>
+</details>
 
 ## 서버 전체 구조
 ![drawio](/assets/img/posts/2026-07-29/GameServer-서버전체구조.drawio.svg)
@@ -353,7 +533,7 @@ _AWS VPC 스크린샷_
 
 - AWS 에서 2개의 VPC(서버용, 더미클라이언트용)를 생성하여 네트워크가 서로 분리되도록 구성하였습니다.
 - machine 들의 spec은 모두 **m7i-flex.large (2 vCPU, 8 GiB 메모리)** 사용, Windows Server 2022 사용하였습니다.
-- 1500 명의 더미 클라이언트로 6시간 동안 테스트하였습니다.
+- 1500 명의 더미 클라이언트로 6시간 동안 테스트하였습니다. 더미 클라이언트 행동 로직은 10%는 마을에서 배회, 45%는 필드 사냥, 45%는 레이드 사냥을 수행합니다.
 
 ### 더미테스트 결과
 - 6시간 동안의 테스트 결과 서버의 CPU 사용률, 메모리 사용률이 안정적으로 유지되었습니다.
@@ -383,4 +563,4 @@ _6시간 동안의 Grafana 대시보드 스크린샷_
 ![drawio](/assets/img/posts/2026-07-29/DummyClient.PNG)
 _6시간 돌린 후의 더미클라이언트 스크린샷_
 - 6시간 동안 64,244,803 개의 패킷을 send 하였고, 822,176,603 개의 패킷을 recv 하였습니다. 
-- 서버 크래시, 연결이 강제로 끊기는 등의 특별한 오류가 감지되지 않았습니다.
+- 서버 크래시, 연결이 강제로 끊김, 패킷처리 지연 등의 특별한 문제가 감지되지 않았습니다.
