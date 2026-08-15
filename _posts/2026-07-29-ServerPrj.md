@@ -18,6 +18,7 @@ Unity 클라이언트와 C++ MMORPG 서버를 함께 개발하는 프로젝트 �
 | 모니터링   | Prometheus · Grafana                           |
 
 - 개발기간: 2026.04.24 ~ 2026.07.30
+- 개발인원 : 1인
 - 소스코드 : [https://github.com/TrynBug/MMOGameServerProject](https://github.com/TrynBug/MMOGameServerProject)
 
 ## 프로젝트 개발 목표
